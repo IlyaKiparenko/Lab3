@@ -13,20 +13,18 @@ int prior(char a) {
     default: return -1;
   }
 }
-int Size(string str) {
-  map<char, double> value;
+void Insert(string str, map<char, double> &a) {
   char curr;
-  int j = 0;
   for (int i = 0; i < str.length(); i++) {
     curr = str[i];
     if (((curr >= 0x41) && (curr <= 0x5A)) || ((curr >= 0x61) && (curr <= 0x7A))) 
-      if (!value.count(curr)) {
-        j++;
-		value[curr]=1;
+      if (!a.count(curr)) {
+		cout<<" "<<curr<<" = ";
+		cin>>a[curr];
+		cout<<endl;
 	  }
     continue;
     }
-  return j;
 }
 string arithmetic::arithmetic_notation(string str) {
   stack<char> operation;
@@ -78,7 +76,7 @@ string arithmetic::arithmetic_notation(string str) {
     return result;
 }
 
-double arithmetic::calculation(string str, double *values, int n) {
+double arithmetic::calculation(string str,  map<char, double> a) {
   if (str == "")
     throw std::exception("Empty expression");
   stack<double> operand;
@@ -86,19 +84,11 @@ double arithmetic::calculation(string str, double *values, int n) {
   double leftOperand;
   double rightOperand;
 
-  map<char, double> value;
   char curr;
-  int j = 1;
   for (int i = 0; i < str.length(); i++) {
     curr = str[i];
     if (((curr >= 0x41) && (curr <= 0x5A)) || ((curr >= 0x61) && (curr <= 0x7A))) {
-      if (j-1 > n)
-        throw std::exception("A lot of values");
-      if (!value.count(curr)) {	
-        value[curr] = values[j-1];
-        j++;
-      }
-      operand.push(value[curr]);
+      operand.push(a[curr]);
       continue;
     }
 

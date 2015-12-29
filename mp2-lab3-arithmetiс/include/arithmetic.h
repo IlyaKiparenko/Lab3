@@ -3,11 +3,11 @@
 #include <iostream>
 #include <string>
 #include "stack.h"
-
+#include <map>
 using namespace std;
-int Size(string str); 
+void Insert(string, map<char, double> &); 
 class arithmetic {
   public:
     static string arithmetic_notation(string);
-    static double calculation(string, double *, int);
+    static double calculation(string, map<char, double>);
 };
