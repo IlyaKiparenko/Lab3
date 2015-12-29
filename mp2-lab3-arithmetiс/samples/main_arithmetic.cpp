@@ -12,7 +12,12 @@ int main() {
   cin >> expression;
   try {
     note = arithmetic::arithmetic_notation(expression);
-    result = arithmetic::arithmetic_calculation(note);
+	cout<<"Input values"<<endl;
+	int n = Size(note);
+	double *mas = new double[n];
+	for (int i=0; i<n; i++)
+		cin>>mas[i];
+    result = arithmetic::calculation(note,mas,n);
   }
   catch (...) {
     cout << "Error! Invalide input" << endl;

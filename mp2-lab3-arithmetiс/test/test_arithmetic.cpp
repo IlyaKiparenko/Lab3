@@ -14,7 +14,7 @@ TEST(arithmetic, can_calculate_expresion_in_a_postfix_notation) {
   double d[3] = { 1, 2, 3 };
   string str2 = arithmetic::arithmetic_notation(str1);
   cout << str2 << endl;
-  double d1 = arithmetic::calculation(str2, d, 2);
+  double d1 = arithmetic::calculation(str2, d, 3);
   EXPECT_EQ(d1, d2);
 }
 
